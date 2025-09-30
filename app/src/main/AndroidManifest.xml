@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Carteira">
         <activity
-            android:name=".Extrato"
+            android:name=".controller.Extrato"
             android:exported="false" />
         <activity
-            android:name=".Operacoes"
+            android:name=".controller.Operacoes"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".controller.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
