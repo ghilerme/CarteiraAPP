@@ -52,4 +52,8 @@ class TransacaoDAO (private val context: Context) {
         db.close()
         return transacao
     }
+
+    fun close() {
+        dbHelper.close()
+    }
 }
