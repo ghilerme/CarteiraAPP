@@ -10,7 +10,19 @@ class DinheiroDAO (private val context: Context) {
 
     private val dbHelper = DBHelper(context)
 
-    fun addDinheiro (dinheiro: Dinheiro): Long {
+    fun getSaldo(): Double? {
+        val db = dbHelper.readableDatabase
+        val cursor: Cursor = db.query(DBHelper.TABLE_NAME_2, null, null, null, null, null, null)
+        var saldo: Double? = null
+        if (cursor.moveToFirst()) {
+            saldo = cursor.getDouble(cursor.getColumnIndexOrThrow("saldo"))
+        }
+        cursor.close()
+        db.close()
+        return saldo
+    }
+
+    fun addSaldo(dinheiro: Dinheiro): Long {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put("saldo", dinheiro.saldo)
@@ -22,10 +34,18 @@ class DinheiroDAO (private val context: Context) {
 
     fun getDinheiroById(id: Int): Dinheiro? {
         val db = dbHelper.readableDatabase
-        val cursor: Cursor = db.query(DBHelper.TABLE_NAME_2, null, "id = ?", arrayOf(id.toString()), null, null, null)
+        val cursor: Cursor = db.query(
+            DBHelper.TABLE_NAME_2,
+            null,
+            "id = ?",
+            arrayOf(id.toString()),
+            null,
+            null,
+            null
+        )
 
         var dinheiro: Dinheiro? = null
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             val saldo = cursor.getDouble(cursor.getColumnIndexOrThrow("saldo"))
             dinheiro = Dinheiro(id, saldo)
         }
@@ -34,13 +54,18 @@ class DinheiroDAO (private val context: Context) {
         return dinheiro
     }
 
-    fun updateDinheiro(dinheiro: Dinheiro): Int {
+    fun updateSaldo(saldo: Double): Int {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
-            put("saldo", dinheiro.saldo)
+            put("saldo", saldo)
         }
-        val rowsAffected = db.update(DBHelper.TABLE_NAME_2, values, "id = ?", arrayOf(dinheiro.id.toString()))
+        val linhasAfetadas = db.update(DBHelper.TABLE_NAME_2, values, null, null)
         db.close()
-        return rowsAffected
+
+        return linhasAfetadas
+    }
+
+    fun close() {
+        dbHelper.close()
     }
 }
