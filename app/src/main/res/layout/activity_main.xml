@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#6F177E"
     android:textAlignment="center"
-    tools:context=".MainActivity">
+    tools:context=".controller.MainActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/wallet_icon_card"
