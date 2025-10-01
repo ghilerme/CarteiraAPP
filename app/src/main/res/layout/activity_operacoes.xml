@@ -33,11 +33,11 @@
 
 
     <EditText
-        android:id="@+id/editText_valor_monetario"
-        android:layout_width="0dp"
+        android:id="@+id/editTextQtd"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:digits="0123456789,"
         android:hint="R$ 0,00"
@@ -49,11 +49,11 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner_tipo_transacao" />
 
     <EditText
-        android:id="@+id/editText_descricao"
+        android:id="@+id/editTextMotive"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="124dp"
         android:layout_marginEnd="16dp"
         android:hint=""
         android:inputType="textCapSentences"
@@ -64,15 +64,16 @@
 
     <Button
         android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="65dp"
         android:layout_marginTop="48dp"
-        android:text="Button"
+        android:text="Salvar"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_descricao"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMotive"
         app:layout_constraintVertical_bias="0.147" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
