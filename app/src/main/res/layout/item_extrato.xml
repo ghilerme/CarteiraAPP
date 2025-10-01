@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#FFFFFF"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/ivIconeTipo"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:srcCompat="@drawable/ic_credito" />
 
     <TextView
@@ -26,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivIconeTipo"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Nome transação" />
+        tools:text="Descrição" />
 
     <TextView
         android:id="@+id/tvValor"

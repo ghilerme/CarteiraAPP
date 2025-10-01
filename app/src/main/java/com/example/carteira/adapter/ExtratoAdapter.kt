@@ -35,14 +35,19 @@ class ExtratoAdapter : RecyclerView.Adapter<ExtratoAdapter.ExtratoViewHolder>() 
     class ExtratoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvDescricao: TextView = itemView.findViewById(R.id.tvDescricao)
         private val tvValor: TextView = itemView.findViewById(R.id.tvValor)
+        private val ivIconeTipo: ImageView = itemView.findViewById(R.id.ivIconeTipo)
 
         fun bind(transacao: Transacao) {
+            tvDescricao.text = transacao.motive
+
             val formatadorMoeda = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
             val valorFormatado = formatadorMoeda.format(transacao.qtd)
 
             if (transacao.type == "Credito") {
+                ivIconeTipo.setImageResource(R.drawable.ic_credito)
                 tvValor.text = "+ $valorFormatado"
             } else {
+                ivIconeTipo.setImageResource(R.drawable.ic_debito)
                 tvValor.text = "- $valorFormatado"
             }
         }

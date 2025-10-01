@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6F177EFF"
+    android:background="#6F177E "
     tools:context=".controller.Extrato">
 
     <androidx.recyclerview.widget.RecyclerView

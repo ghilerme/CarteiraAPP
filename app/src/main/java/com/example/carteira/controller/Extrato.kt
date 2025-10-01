@@ -1,12 +1,14 @@
 package com.example.carteira.controller
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.carteira.adapter.ExtratoAdapter
 import com.example.carteira.data.dao.DinheiroDAO
 import com.example.carteira.data.dao.TransacaoDAO
 import com.example.carteira.databinding.ActivityExtratoBinding
+import com.example.carteira.model.Dinheiro
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -44,7 +46,12 @@ class Extrato : AppCompatActivity() {
     }
 
     private fun atualizarSaldo() {
-        val saldo = dinheiroDAO.getDinheiroById(0)
+        //val dinheiro = dinheiroDAO.getDinheiroById(0)
+        if (dinheiroDAO.getSaldo() == null) {
+            dinheiroDAO.addSaldo(Dinheiro(saldo = 0.0))
+        }
+        val saldo = dinheiroDAO.getSaldo()
+        Log.d("Ronaldo", "ronaldo $saldo")
         val formatadorMoeda = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
         binding.tvSaldo.text = formatadorMoeda.format(saldo)
     }
