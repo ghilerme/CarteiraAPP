@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Carteira</string>
+
+    <string-array name="type_array">
+        <item>Débito</item>
+        <item>Crédito</item>
+    </string-array>
+
 </resources>
+
