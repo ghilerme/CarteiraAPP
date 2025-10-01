@@ -37,7 +37,7 @@ class Operacoes : AppCompatActivity() {
         transacaoDAO = TransacaoDAO(this)
         dinheiroDAO = DinheiroDAO(this)
 
-        val spinnerType = findViewById<Spinner>(R.id.spinnerType)
+        val spinnerType = findViewById<Spinner>(R.id.spinner_tipo_transacao)
         val buttonSave = findViewById<Button>(R.id.buttonSave)
 
         ArrayAdapter.createFromResource(
@@ -54,7 +54,7 @@ class Operacoes : AppCompatActivity() {
         }
     }
     private fun saveTransacao(){
-        val spinnerType = findViewById<Spinner>(R.id.spinnerType)
+        val spinnerType = findViewById<Spinner>(R.id.spinner_tipo_transacao)
         val editTextQtd = findViewById<EditText>(R.id.editTextQtd)
         val editTextMotive = findViewById<EditText>(R.id.editTextMotive)
 
