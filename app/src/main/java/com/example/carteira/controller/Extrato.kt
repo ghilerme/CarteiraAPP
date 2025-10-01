@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.carteira.R
 import com.example.carteira.adapter.ExtratoAdapter
 import com.example.carteira.data.dao.DinheiroDAO
 import com.example.carteira.data.dao.TransacaoDAO
@@ -29,8 +30,16 @@ class Extrato : AppCompatActivity() {
         dinheiroDAO = DinheiroDAO(this)
 
         setupRecyclerView()
+        setupBotaoVoltar()
         atualizarSaldo()
         carregarTransacoes()
+        setupFiltros()
+    }
+
+    private fun setupBotaoVoltar() {
+        binding.btnVoltar.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -54,5 +63,30 @@ class Extrato : AppCompatActivity() {
         Log.d("Ronaldo", "ronaldo $saldo")
         val formatadorMoeda = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
         binding.tvSaldo.text = formatadorMoeda.format(saldo)
+    }
+
+    private fun setupFiltros() {
+        binding.rgFiltros.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.rbTodos -> carregarTransacoes(null) // null para "Todos"
+                R.id.rbCreditos -> carregarTransacoes("Credito")
+                R.id.rbDebitos -> carregarTransacoes("Debito")
+            }
+        }
+    }
+
+    private fun carregarTransacoes(filtro: String?) {
+        if (filtro == "Credito") {
+            val lista = transacaoDAO.getAllChars().filter { it.type == "Credito" }
+            extratoAdapter.setTransacoes(lista)
+            return
+        } else if (filtro == "Debito") {
+            val lista = transacaoDAO.getAllChars().filter { it.type == "Debito" }
+            extratoAdapter.setTransacoes(lista)
+            return
+        }
+
+        val lista = transacaoDAO.getAllChars()
+        extratoAdapter.setTransacoes(lista)
     }
 }

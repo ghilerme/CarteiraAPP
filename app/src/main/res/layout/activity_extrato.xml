@@ -5,19 +5,18 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6F177E "
+    android:background="#6F177E"
     tools:context=".controller.Extrato">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTransacoes"
-        android:layout_width="306dp"
-        android:layout_height="522dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="149dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageButton
+        android:id="@+id/btnVoltar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Voltar"
+        android:src="@drawable/ic_voltar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,18 +24,79 @@
         android:id="@+id/tvSaldo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="73dp"
-        android:layout_marginEnd="168dp"
-        android:layout_marginBottom="639dp"
+        android:layout_marginTop="32dp"
         android:text="Saldo: R$00"
         android:textColor="#ffffff"
-        android:textFontWeight="800"
-        android:textSize="18sp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <RadioGroup
+        android:id="@+id/rgFiltros"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSaldo">
+
+        <RadioButton
+            android:id="@+id/rbTodos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radio_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Todos"
+            android:textColor="@drawable/radio_text_selector"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/rbCreditos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_selector"
+            android:button="@null"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Créditos"
+            android:textColor="@drawable/radio_text_selector" />
+
+        <RadioButton
+            android:id="@+id/rbDebitos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radio_selector"
+            android:button="@null"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Débitos"
+            android:textColor="@drawable/radio_text_selector" />
+    </RadioGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTransacoes"
+        android:layout_width="380dp"
+        android:layout_height="485dp"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintTop_toBottomOf="@id/rgFiltros"
+        app:layout_constraintVertical_bias="0.136"
+        tools:listitem="@layout/item_extrato" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
