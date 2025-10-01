@@ -71,7 +71,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="124dp"
         android:layout_marginEnd="16dp"
-        android:hint=""
+        android:hint="Insira uma descrição"
         android:inputType="textCapSentences"
         android:fontFamily="@font/montserrat_regular"
         android:textColor="#FFFFFF"
